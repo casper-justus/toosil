@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Graphite Groove</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Graphite Groove</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html" class="active-nav-link">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+    <!-- Hero Section for Portfolio -->
+    <section id="hero-portfolio" class="page-hero">
+        <div class="container">
+            <h2>Our Work</h2>
+            <p>A showcase of innovation, creativity, and meticulous execution.</p>
+        </div>
+    </section>
+
+    <section id="sticky-scroll-feature">
+        <div class="sticky-scroll-container">
+            <div class="sticky-text-panel">
+                <div class="sticky-content">
+                    <h2>The Graphite Groove Approach: Project Journeys</h2> <!-- This can remain static -->
+                    <h3 id="sticky-narrative-headline">Discovery Phase</h3> <!-- This will change -->
+                    <p id="sticky-narrative-paragraph">We begin by deeply understanding your vision, goals, and audience. This foundational step ensures our strategy aligns perfectly with your aspirations.</p> <!-- This will change -->
+                    <a href="index.html#contact" class="button-style" style="margin-top: 20px;">Start Your Project</a>
+                </div>
+            </div>
+            <div class="scrolling-images-panel">
+                <div class="image-item"
+                     data-narrative-headline="Client A: Vision & Clarity"
+                     data-narrative-paragraph="For Client A, we translated a complex vision into a clear, actionable strategy, laying the groundwork for an innovative and user-centric web platform.">
+                    <img src="https://via.placeholder.com/600x800/000000/FFC107?text=Portfolio+Image+1" alt="Portfolio Image 1">
+                    <div class="image-caption">Client A - Web Platform</div>
+                </div>
+                <div class="image-item"
+                     data-narrative-headline="Client B: Interactive Artistry"
+                     data-narrative-paragraph="With Client B, we pushed creative boundaries, exploring cutting-edge interactive concepts to develop a captivating digital art experience that engaged audiences worldwide.">
+                    <img src="https://via.placeholder.com/600x800/0A0A0A/FFD700?text=Portfolio+Image+2" alt="Portfolio Image 2">
+                    <div class="image-caption">Client B - Interactive Art</div>
+                </div>
+                <div class="image-item"
+                     data-narrative-headline="Client C: Seamless E-commerce"
+                     data-narrative-paragraph="We engineered a flawless and engaging e-commerce experience for Client C, directly boosting sales and cultivating lasting brand loyalty through intuitive design.">
+                    <img src="https://via.placeholder.com/600x800/121212/FFF8E1?text=Portfolio+Image+3&txtColor=000000" alt="Portfolio Image 3">
+                    <div class="image-caption">Client C - E-commerce</div>
+                </div>
+                <div class="image-item"
+                     data-narrative-headline="Client D: Mobile First"
+                     data-narrative-paragraph="Adopting a mobile-first strategy for Client D, we delivered a dynamic and highly accessible app that significantly expanded their audience reach and user engagement.">
+                    <img src="https://via.placeholder.com/600x800/1A1A1A/FFC107?text=Portfolio+Image+4" alt="Portfolio Image 4">
+                    <div class="image-caption">Client D - Mobile App</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Graphite Groove. All rights reserved.</p>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

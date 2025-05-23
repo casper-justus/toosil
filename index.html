@@ -4,76 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Graphite Groove</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <h1>Graphite Groove</h1>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="index.html" class="active-nav-link">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <section id="hero">
-            <!-- Placeholder for parallax background element/image -->
-            <div class="parallax-bg-placeholder" style="background-image: url('images/placeholder-parallax-bg.jpg');"></div>
-            <!-- Entry animation to be applied here -->
-            <!-- Placeholder for background video loop -->
-            <h1>Graphite Groove: Design Reimagined <span class="decorative-groove-element"></span></h1>
-            <p>We craft visually stunning and highly functional websites that captivate your audience and elevate your brand.</p>
-            <a href="#projects" class="cta-button">Explore Our Work</a>
-            <!-- Hero carousel functionality to be implemented later. -->
-            <div class="hero-carousel">
-                <div class="slide">Slide 1</div>
-                <div class="slide">Slide 2</div>
-                <div class="slide">Slide 3</div>
+            <div class="carousel-container">
+                <div class="carousel-slide">
+                    <img src="https://via.placeholder.com/1200x500/000000/FFC107?text=Graphite+Groove+Interface" alt="Showcase Image 1">
+                    <div class="carousel-caption">
+                        <h2>Design That Resonates</h2>
+                        <p>Experience the fusion of art and technology. Graphite Groove crafts digital experiences that captivate and inspire.</p>
+                    </div>
+                </div>
+                <div class="carousel-slide" style="display:none;"> <!-- Hide other slides for now -->
+                    <img src="https://via.placeholder.com/1200x500/0A0A0A/FFD700?text=Interactive+Elements" alt="Showcase Image 2">
+                    <div class="carousel-caption">
+                        <h2>Interactive By Nature</h2>
+                        <p>We build fluid, intuitive interfaces that engage users and drive results. Every click, every scroll, perfectly orchestrated.</p>
+                    </div>
+                </div>
+                <div class="carousel-slide" style="display:none;"> <!-- Hide other slides for now -->
+                    <img src="https://via.placeholder.com/1200x500/121212/FFF8E1?text=Modern+Aesthetics&txtColor=000000" alt="Showcase Image 3">
+                    <div class="carousel-caption">
+                        <h2>Elegance in Every Pixel</h2>
+                        <p>Discover the power of sleek, modern aesthetics. Our designs are crafted with precision, passion, and a touch of groove.</p>
+                    </div>
+                </div>
+                <button class="carousel-button prev" aria-label="Previous slide">&#10094;</button>
+                <button class="carousel-button next" aria-label="Next slide">&#10095;</button>
+                <!-- Carousel navigation (dots/arrows) will be added later with JS -->
             </div>
         </section>
 
-        <section id="projects" class="reveal-on-scroll">
-            <h2>Projects</h2>
-            <p>Placeholder for project showcases.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <section id="projects"> <!-- Removed reveal-on-scroll from the section itself -->
+            <h2>Our Projects</h2>
+            <div class="project-grid-container">
+                <div class="project-item">
+                    <img src="https://via.placeholder.com/600x400/0D0D0D/FFC107?text=Project+Aura" alt="Project Aura Mockup">
+                    <p>Project Aura: An immersive web platform designed for a leading digital art collective. Featuring dynamic content loading and a unique visual identity that adapts to user interaction.</p>
+                </div>
+                <div class="project-item">
+                    <img src="https://via.placeholder.com/600x400/1A1A1A/FFD700?text=Project+Momentum" alt="Project Momentum Mockup">
+                    <p>Project Momentum: A high-performance e-commerce site for a luxury brand. Focused on seamless user experience, micro-interactions, and a blazing-fast, responsive interface.</p>
+                </div>
+            </div>
         </section>
 
-        <section id="testimonials">
+        <section id="testimonials" class="reveal-on-scroll" style="transition-delay: 0.1s;">
             <h2>Testimonials</h2>
-            <!-- Testimonial carousel functionality to be implemented later. -->
-            <div class="testimonial-carousel">
-                <div class="testimonial-slide">Testimonial 1</div>
-                <div class="testimonial-slide">Testimonial 2</div>
-                <div class="testimonial-slide">Testimonial 3</div>
+            <div class="testimonial-item reveal-on-scroll">
+                <p>"Graphite Groove transformed our online presence. Their attention to detail and commitment to creating a seamless user experience was exceptional. The new website has already led to a significant increase in engagement!"</p>
+                <h4>- Alex Chen, CEO of Innovate Solutions</h4>
+            </div>
+            <div class="testimonial-item reveal-on-scroll" style="transition-delay: 0.1s;">
+                <p>"Working with the Graphite Groove team was a fantastic experience. They are true masters of interactive design, bringing our complex ideas to life with elegance and precision. We couldn't be happier with the result."</p>
+                <h4>- Sarah Miller, Art Director at Creative Visions Co.</h4>
             </div>
         </section>
 
-        <section id="team">
+        <section id="team" class="reveal-on-scroll" style="transition-delay: 0.2s;">
             <h2>Our Team</h2>
-            <!-- Team carousel functionality to be implemented later. -->
-            <div class="team-carousel">
-                <div class="team-member-slide">Team Member 1</div>
-                <div class="team-member-slide">Team Member 2</div>
-                <div class="team-member-slide">Team Member 3</div>
+            <div class="team-member-summary reveal-on-scroll">
+                <img src="https://via.placeholder.com/150x150/0D0D0D/FFC107?text=JD" alt="Jane Doe - Lead Designer" class="team-avatar-summary">
+                <h5>Jane Doe - Lead Designer</h5>
+                <p>Jane spearheads our design efforts, blending artistic vision with user-centric strategies to create unforgettable digital landscapes.</p>
             </div>
+            <div class="team-member-summary reveal-on-scroll" style="transition-delay: 0.1s;">
+                <img src="https://via.placeholder.com/150x150/1A1A1A/FFD700?text=RS" alt="Robert Smith - Head of Technology" class="team-avatar-summary">
+                <h5>Robert Smith - Head of Technology</h5>
+                <p>Robert leads our development team, pushing the boundaries of what's possible with cutting-edge tech and robust architectures.</p>
+            </div>
+            <a href="about.html#team-detailed" class="button-style" style="margin-top: 20px;">Meet The Whole Team</a>
         </section>
 
         <section id="about" class="reveal-on-scroll">
             <h2>About Us</h2>
-            <p>Placeholder for information about Graphite Groove.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Graphite Groove is where innovative design meets interactive excellence. We are a passionate team dedicated to crafting bespoke digital experiences that captivate and inspire. Our mission is to transform your vision into reality with precision and a touch of groove.</p>
+            <a href="about.html" class="button-style" style="margin-top: 15px;">Learn More About Us</a>
         </section>
 
         <section id="contact" class="reveal-on-scroll">
-            <h2>Contact Us</h2>
-            <p>Placeholder for contact information/form.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h2>Get In Touch</h2>
+            <p>Have a project in mind or just want to learn more about our process? We're ready to listen.</p>
+            <div class="contact-info" style="margin-bottom: 30px;">
+                <p><strong>Email:</strong> <a href="mailto:hello@graphitegroove.com">hello@graphitegroove.com</a></p>
+                <p><strong>Phone:</strong> (555) 123-4567</p>
+                <p><strong>Address:</strong> 123 Groove Street, Design City, DC 12345</p>
+            </div>
+            <a href="contact.html" class="button-style">Send Us a Detailed Message</a>
         </section>
     </main>
 
@@ -82,7 +114,7 @@
     </footer>
 
     <!-- Sticky "Get a Quote" Button Placeholder -->
-    <a href="#contact" class="sticky-quote-button">Get a Quote</a>
+    <a href="#contact" class="sticky-quote-button button-style">Get a Quote</a>
 
     <script src="js/script.js"></script>
 </body>

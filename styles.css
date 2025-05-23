@@ -1,0 +1,912 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Changed from Arial */
+    font-size: 16px;
+    line-height: 1.6;
+    color: #FFF8E1; /* Light honey/off-white for readability on black */
+    background-color: #000000; /* Dark background */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700; /* Use Montserrat bold for headings */
+}
+
+h3 {
+    font-size: 1.8em; /* Or desired size */
+    color: #FFD700; /* Lighter honey for emphasis, or keep #FFC107 */
+    margin-bottom: 20px;
+    margin-top: 10px; /* Add some top margin if it follows a paragraph */
+}
+
+a {
+    color: #FFC107; /* Honey accent color */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for color changes */
+}
+
+a:hover {
+    color: #FFD700; /* Lighter honey on hover */
+    /* text-decoration: none; /* Optionally keep or remove underline */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Header Styling */
+header {
+    background-color: #0D0D0D; /* Very dark gray for subtle separation */
+    padding: 20px 0;
+    border-bottom: 1px solid #444; /* Dark honey/muted gray border */
+    text-align: center; /* Center logo and nav for now */
+}
+
+header h1 { /* Logo styling */
+    color: #FFC107; /* Honey color for logo */
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+/* Navigation Styling */
+header nav ul {
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline-block; /* Horizontal navigation */
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #FFC107;
+    font-size: 1.1em;
+    transition: color 0.3s ease, border-bottom-color 0.3s ease; /* Add transition for border */
+    padding-bottom: 5px; /* Add padding for the border to appear nicely */
+    border-bottom: 2px solid transparent; /* Transparent border initially */
+}
+
+header nav ul li a:hover {
+    color: #FFD700;
+    text-decoration: none;
+    border-bottom-color: #FFD700; /* Honey color border appears on hover */
+}
+
+/* Hero Section Styling */
+#hero {
+    background-color: #000000; /* Black background for hero */
+    color: #FFF8E1; /* Light honey/off-white text */
+    min-height: 70vh; /* Make it tall */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* padding: 0 20px; /* Padding for content - REMOVED as per subtask */
+    border-bottom: 1px solid #444; /* Dark honey/muted gray border */
+    padding: 0; /* Remove padding from hero itself if carousel handles it */
+    overflow: hidden; /* Prevent content spill during transitions */
+}
+
+/* #hero h2 and #hero p are removed as content is now in carousel captions */
+
+.carousel-container {
+    width: 100%;
+    height: 100%; /* Ensure it fills the hero section */
+    position: relative; /* For absolute positioning of captions/nav later */
+}
+
+.carousel-slide {
+    width: 100%;
+    height: 100%;
+    /* display: flex; /* Use flex to align image and caption if needed */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* text-align: center; */
+    /* position: relative; /* For caption positioning */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+    position: absolute; /* Stack them */
+    top: 0;
+    left: 0;
+    display: flex; /* ensure content like caption is visible */
+    align-items: center; /* vertically center caption */
+    justify-content: center; /* horizontally center caption */
+}
+
+/* Fallback for non-JS: show first slide. JS will override. */
+.carousel-container:not(.js-active) .carousel-slide:first-child {
+    opacity: 1;
+    visibility: visible;
+    position: relative; /* Take up space */
+}
+
+.carousel-slide.active { /* JS manages this */
+    opacity: 1;
+    visibility: visible;
+    position: relative; /* Take up space */
+    z-index: 2; /* Above other slides */
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Make images cover the slide area */
+    position: absolute; /* Position image as background */
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.carousel-caption {
+    position: relative; /* Or absolute if you want to place it precisely */
+    z-index: 2; /* Ensure caption is above the image */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background for readability */
+    color: #FFF8E1;
+    padding: 20px 40px;
+    border-radius: 5px;
+    max-width: 70%;
+}
+
+.carousel-caption h2 {
+    color: #FFC107; /* Honey color for caption heading */
+    font-size: 2.5em; /* Adjust as needed */
+    margin-bottom: 10px;
+}
+
+.carousel-caption p {
+    color: #FFF8E1;
+    font-size: 1.1em; /* Adjust as needed */
+}
+
+/* General styling for content sections */
+section {
+    padding: 60px 20px; /* Vertical and horizontal padding */
+    text-align: center; /* Center content within sections */
+    border-bottom: 1px solid #444; /* Dark honey/muted gray border */
+}
+
+section:last-of-type {
+    border-bottom: none; /* Remove border from the last section */
+}
+
+section h2 {
+    font-size: 2.5em;
+    color: #FFC107; /* Honey color for section headings */
+    margin-bottom: 30px;
+}
+
+section p {
+    font-size: 1.1em;
+    color: #FFF8E1; /* Light honey/off-white for section paragraphs */
+    max-width: 700px; /* Constrain paragraph width for readability */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px; /* Space below paragraphs */
+}
+
+/* Specific styling if needed, for now, general is fine */
+/* Example:
+#projects {
+    background-color: #0D0D0D; /* Very dark gray for variation, matching header */
+}
+*/
+
+/* Footer Styling */
+footer {
+    background-color: #0D0D0D; /* Very dark gray, similar to header */
+    color: #FFF8E1; /* Light honey/off-white text */
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid #444; /* Dark honey or muted gray top border */
+}
+
+footer p {
+    font-size: 0.9em;
+    margin: 0; /* Reset margin for footer p if any was inherited */
+}
+
+footer a { /* If there are links in footer */
+    color: #FFC107; /* Honey color for links */
+}
+
+footer a:hover {
+    color: #FFD700; /* Lighter honey on hover */
+}
+
+/* Button Styling (generic) */
+.button-style { /* A generic button class we can apply */
+    display: inline-block;
+    background-color: #FFC107; /* Honey background */
+    color: #000000; /* Black text for contrast */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 700; /* Bold text */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.button-style:hover {
+    background-color: #FFD700; /* Lighter honey */
+    color: #000000;
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for lift */
+}
+
+.sticky-quote-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000; /* Ensure it's above other content */
+    /* The .button-style class will provide its visual styling (colors, padding, etc.) */
+    /* We can add specific tweaks here if needed, e.g., for shadow to be more prominent */
+}
+
+/* Ensure the hover effect from .button-style applies correctly.
+   If there's a need to adjust the shadow on the sticky button specifically: */
+.sticky-quote-button:hover {
+    box-shadow: 0 6px 12px rgba(255, 221, 0, 0.3); /* Honey-colored shadow on hover */
+}
+
+/* Text Reveal Animation Styling */
+.text-reveal-item {
+    opacity: 0;
+    transform: translateY(25px); /* Start slightly lower */
+    /* filter: blur(3px); /* Optional: for a softer reveal */
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                /* filter 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Add if filter is used */
+    /* transition-delay will be set by JavaScript for staggering */
+}
+
+.text-reveal-item.active {
+    opacity: 1;
+    transform: translateY(0);
+    /* filter: blur(0); /* Add if filter is used */
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(50px); /* Start further down for a more noticeable slide-up */
+    filter: blur(5px); /* Start blurred */
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), /* Smoother easing */
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* transition-delay: var(--scroll-anim-delay, 0s); /* For staggered animations if needed via JS */
+}
+
+.reveal-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+/* Project Grid Styling */
+.project-grid-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to next line if needed */
+    justify-content: center; /* Center items if they don't fill the line */
+    gap: 30px; /* Space between project items */
+    padding: 20px 0; /* Padding above/below the grid */
+}
+
+.project-item {
+    /* margin-bottom: 40px; /* Remove this, use gap in container */
+    background-color: #0D0D0D; /* Optional: give items a slight background */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #222; /* Consistent with other items */
+    flex-basis: calc(50% - 15px); /* For 2 columns, accounting for 30px gap. (50% - half of gap) */
+    max-width: calc(50% - 15px); /* Ensure it doesn't grow larger */
+    /* min-width: 300px; /* Prevent items from becoming too small before wrapping */
+    text-align: center; /* Center content within project item */
+    opacity: 0; /* Start hidden by default before JS adds animation class */
+    transform: translateY(40px) scale(0.95); /* Initial transformed state */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.4s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-8px) scale(1.03); 
+    border-color: #FFC107; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 
+                0 0 15px rgba(255, 193, 7, 0.2); 
+    cursor: pointer; 
+}
+
+.project-item img {
+    display: block;
+    width: 100%; /* Make image take full width of its .project-item container */
+    max-width: 100%; /* Override any previous max-width like 600px if it was too large for grid items */
+    height: auto;
+    border-radius: 6px; /* Slightly smaller radius for image inside card */
+    /* border: 1px solid #222; /* Border already on .project-item */
+    margin-bottom: 15px;
+}
+.project-item p {
+    font-size: 0.95em; /* Slightly smaller text for project items */
+    color: #FFF8E1;
+    line-height: 1.5;
+    transition: color 0.3s ease; /* Smooth color transition for paragraph text */
+}
+
+.project-item:hover p {
+    color: #FFFFFF; /* Make text slightly brighter white on hover */
+}
+
+@keyframes gridItemFadeInUpScale {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+        /* filter: blur(3px); /* Optional: add blur back if desired */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        /* filter: blur(0); */
+    }
+}
+
+.project-item.animate-in {
+    opacity: 1; /* Final state for non-JS or if JS only sets this class */
+    transform: translateY(0) scale(1); /* Final state */
+    animation-name: gridItemFadeInUpScale;
+    animation-duration: 0.7s; /* Duration of the animation */
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth easing */
+    animation-fill-mode: forwards; /* Retain styles from the last keyframe */
+    /* animation-delay will be set by JS inline for staggering */
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10; /* Above slides but can be below other UI if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    color: #FFC107; /* Honey color */
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 50%; /* Circular buttons */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.carousel-button:hover {
+    background-color: #FFC107; /* Honey background on hover */
+    color: #000000; /* Black text on hover */
+}
+
+.carousel-button.prev {
+    left: 20px;
+}
+
+.carousel-button.next {
+    right: 20px;
+}
+
+/* Service Cards Styling (services.html) */
+.service-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px 0; /* Padding above/below the grid of cards */
+}
+
+.service-cards-container > section { /* Each <section> is a flex item */
+    flex-basis: calc(33.333% - 20px); /* For 3 columns, (100% / 3) - (2/3 * gap) */
+    max-width: calc(33.333% - 20px);
+    min-width: 280px; /* Minimum width before wrapping */
+    display: flex; /* Allow .service-card to fill height */
+    flex-direction: column;
+    padding: 0; /* Remove default section padding, card will handle it */
+    /* .reveal-on-scroll class is on this <section> */
+}
+
+.service-card { /* This class is on the inner div.container */
+    background-color: #0D0D0D;
+    border: 1px solid #222;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 30px 25px !important; /* Override .container's default Y padding, ensure X padding */
+    width: 100%; /* Takes full width of its parent <section> */
+    height: 100%; /* Takes full height of its parent <section> */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes button to bottom */
+    text-align: center;
+    opacity: 1; /* Explicitly set initial opacity */
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.35s ease,
+                opacity 0.35s ease; /* Added opacity to transition */
+}
+
+/* When hovering the container, reduce opacity of all cards that are children of <section>s */
+.service-cards-container:hover > section .service-card {
+    opacity: 0.55; /* Dimmer opacity */
+}
+
+.service-card:hover {
+    opacity: 1; /* Ensure hovered card is full opacity */
+    transform: scale(1.04); /* Slightly smaller scale for subtlety */
+    border-color: #FFC107; /* Honey accent border on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), /* Enhanced shadow */
+                0 0 15px rgba(255, 193, 7, 0.15); /* Subtle honey glow */
+    z-index: 10; /* Ensure hovered card comes above others if they overlap during scale */
+    position: relative; /* Needed for z-index to properly apply on transformed items */
+}
+
+.service-card h3 {
+    font-size: 1.6em;
+    color: #FFC107;
+    margin-top: 0; /* Reset any top margin from global h3 if needed */
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    font-size: 1em;
+    color: #FFF8E1;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1; /* Allows paragraph to take up available space */
+}
+
+/* .service-card .button-style styling is handled by global .button-style */
+
+/* Styling for Page Heroes (if different from main hero) */
+.page-hero {
+    background-color: #0D0D0D; /* Slightly different from homepage hero, or can be same */
+    color: #FFF8E1;
+    padding: 80px 20px;
+    text-align: center;
+    border-bottom: 1px solid #444;
+}
+.page-hero h2 {
+    font-size: 2.8em; /* Larger for page titles */
+    color: #FFC107;
+    margin-bottom: 15px;
+}
+.page-hero p {
+    font-size: 1.2em;
+    color: #FFF8E1;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Styling for list in About Us Values section */
+#values ul {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: left;
+}
+#values ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #222; /* Subtle separator */
+    font-size: 1.05em;
+}
+#values ul li:last-child {
+    border-bottom: none;
+}
+#values ul li strong {
+    color: #FFC107; /* Highlight the value title */
+}
+
+/* Contact Page Specific Styling */
+#contact-form-section {
+    padding: 40px 20px 60px 20px; /* Top, LR, Bottom */
+    background-color: #000000; /* Ensure consistency with body or other sections */
+}
+#main-contact-form {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* General Form Styling (can be scoped to #main-contact-form if needed) */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #FFD700; /* Brighter honey for labels */
+    font-weight: bold;
+    font-size: 1.05em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #111; /* Dark background for fields */
+    border: 1px solid #444; /* Muted border */
+    color: #FFF8E1; /* Light text for input */
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif; /* Ensure font consistency */
+    font-size: 1em;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: #FFC107; /* Honey border on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 8px rgba(255, 193, 7, 0.3); /* Subtle glow */
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resize, disable horizontal */
+    min-height: 120px;
+}
+
+/* Feedback message styling */
+#form-feedback { /* Base style for the feedback div when it becomes visible */
+    margin-bottom: 20px;
+    padding: 12px 15px; /* Slightly more padding */
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    /* display: none; /* JS handles initial display:none and then display:block */
+}
+#form-feedback.success {
+    background-color: rgba(0, 189, 212, 0.15); /* Slightly more visible background */
+    border: 1px solid #00bcd4;
+    color: #00bcd4;
+    /* display: block !important; /* Remove !important if JS handles display */
+}
+
+#form-feedback.error {
+    background-color: rgba(255, 193, 7, 0.15); /* Slightly more visible background */
+    border: 1px solid #FFC107;
+    color: #FFC107;
+    /* display: block !important; /* Remove !important */
+}
+
+/* Team Member Profile Styling (about.html) */
+.team-member-profile {
+    background-color: #0A0A0A; /* Slightly different from section background if section is #000 */
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    text-align: center; /* Center avatar and text initially */
+    border: 1px solid #222;
+}
+.team-avatar-profile {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 3px solid #FFC107;
+}
+.team-member-profile h4 { /* Name */
+    font-size: 1.6em;
+    color: #FFC107;
+    margin-bottom: 5px;
+}
+.team-member-profile h5 { /* Title */
+    font-size: 1.1em;
+    color: #FFD700; /* Brighter honey */
+    margin-bottom: 15px;
+    font-weight: 400; /* Regular weight for title */
+}
+.team-member-profile p { /* Bio */
+    font-size: 1em;
+    color: #FFF8E1;
+    max-width: 600px; /* Constrain bio width */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left; /* Align bio text left for readability */
+    line-height: 1.7;
+}
+
+/* Responsive adjustments for team profiles if needed */
+@media (min-width: 769px) { /* For side-by-side on larger screens if desired */
+    /* Example: if we wanted 2 columns for team members
+    .team-detailed-container { display: flex; flex-wrap: wrap; justify-content: space-around; }
+    .team-member-profile { flex-basis: 45%; }
+    */
+    /* For now, they will stack, which is fine. */
+}
+
+/* Testimonial Item Styling */
+.testimonial-item {
+    background-color: #0D0D0D; /* Slightly different background */
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    border-left: 4px solid #FFC107; /* Honey accent border */
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+.testimonial-item p {
+    font-style: italic;
+    color: #FFF8E1; /* Ensure text color */
+    margin-bottom: 15px; /* Space before author name */
+}
+.testimonial-item h4 {
+    font-size: 1.1em;
+    color: #FFD700; /* Brighter honey for author */
+    text-align: right;
+    font-weight: 700;
+}
+
+/* Team Member Summary Styling */
+.team-member-summary {
+    margin-bottom: 25px;
+    max-width: 300px; /* Control width of each summary item */
+    display: inline-block; /* Allow side-by-side flow if space permits or for future flex */
+    vertical-align: top;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+.team-avatar-summary {
+    width: 120px; /* Smaller avatar for summary */
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 2px solid #FFC107;
+}
+.team-member-summary h5 {
+    font-size: 1.2em;
+    color: #FFC107;
+    margin-bottom: 8px;
+}
+/* .team-member-summary p is covered by general section p styles or can be more specific */
+
+/* Contact Info & Form Placeholder Styling */
+.contact-info p {
+    margin-bottom: 8px;
+    font-size: 1.05em;
+}
+.contact-info p strong {
+    color: #FFC107;
+}
+#contact-form-placeholder .form-group {
+    margin-bottom: 15px;
+}
+#contact-form-placeholder label {
+    display: block;
+    margin-bottom: 5px;
+    color: #FFD700;
+    font-weight: bold;
+}
+/* Input/textarea styles are inline in HTML for this placeholder, can be moved to CSS */
+
+/* Optional: Highlight for active image in sticky scroll */
+.image-item.active-image-highlight img {
+    border-color: #FFD700; /* Honey color border */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    transform: scale(1.02); /* Slight zoom */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Sticky Scroll Feature Styles */
+#sticky-scroll-feature {
+    background-color: #000000; /* Ensure background is black */
+    padding: 0; /* Remove default section padding if container handles it */
+    overflow: hidden; /* Important for containing floats or flex items if used this way */
+}
+
+.sticky-scroll-container {
+    display: flex; /* Use flexbox for side-by-side layout */
+    position: relative; /* Needed for absolute positioning or sticky behavior within */
+    max-width: 1400px; /* Control overall width */
+    margin: 0 auto; /* Center it */
+    padding: 60px 20px; /* Re-apply section-like padding here */
+}
+
+.sticky-text-panel {
+    flex: 1; /* Takes up available space, e.g., 40% */
+    padding-right: 40px; /* Space between text and image panel */
+    height: 100%; /* Occupy full height of parent for sticky to work as expected */
+}
+
+.sticky-content {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 100px; /* Adjust based on actual header height to prevent overlap */
+}
+
+.sticky-content h2 {
+    font-size: 2.2em;
+    color: #FFC107;
+    margin-bottom: 20px;
+}
+
+.sticky-content p {
+    font-size: 1.1em;
+    color: #FFF8E1;
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.scrolling-images-panel {
+    flex: 1.5; /* Takes up more space, e.g., 60% */
+}
+
+.image-item {
+    margin-bottom: 30px; /* Space between images */
+    text-align: center;
+}
+
+.image-item img {
+    width: 100%;
+    max-width: 500px; /* Control image size */
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #222;
+    margin-bottom: 10px;
+}
+
+.image-caption {
+    font-size: 0.9em;
+    color: #FFC107; /* Honey color for caption */
+}
+
+/* Responsive adjustments for sticky scroll feature */
+@media (max-width: 992px) { /* Tablet - 2 columns */
+    .service-cards-container > section {
+        flex-basis: calc(50% - 15px); /* 2 columns, accounting for 30px gap */
+        max-width: calc(50% - 15px);
+    }
+    .sticky-scroll-container {
+        flex-direction: column; /* Stack text and images */
+    }
+    .sticky-text-panel {
+        padding-right: 0;
+        padding-bottom: 30px; /* Adjusted from 40px for slightly less space */
+    }
+    .sticky-content {
+        position: static; /* Disable sticky behavior when stacked */
+    }
+    .sticky-content h2 {
+        font-size: 1.8em; /* Adjust if needed */
+    }
+    .sticky-content p {
+        font-size: 1em; /* Adjust if needed */
+    }
+}
+
+header nav ul li a.active-nav-link {
+    color: #FFD700; /* Lighter honey, same as hover */
+    border-bottom-color: #FFD700; /* Keep border consistent with hover */
+    /* Optionally add more distinction, e.g., font-weight: bold; if not already bold */
+}
+
+/* Medium screens (tablets, large phones) - up to 768px */
+@media (max-width: 768px) {
+    body {
+        font-size: 15px; /* Slightly reduce base font size */
+    }
+
+    header h1 {
+        font-size: 2em; /* Reduce header logo size */
+    }
+
+    header nav ul li {
+        margin: 0 10px; /* Reduce nav spacing */
+    }
+    header nav ul li a {
+        font-size: 1em; /* Reduce nav link size */
+    }
+
+    #hero {
+        min-height: 60vh; /* Adjust hero height */
+    }
+
+    .carousel-caption h2 {
+        font-size: 2em; /* Reduce carousel heading */
+    }
+    .carousel-caption p {
+        font-size: 1em; /* Reduce carousel paragraph */
+        max-width: 85%; /* Allow slightly wider text block */
+    }
+    .carousel-button {
+        padding: 8px 12px;
+        font-size: 20px;
+    }
+    .carousel-button.prev {
+        left: 10px;
+    }
+    .carousel-button.next {
+        right: 10px;
+    }
+
+
+    section h2 {
+        font-size: 2em; /* Reduce section heading size */
+    }
+    section p {
+        font-size: 1em; /* Reduce section paragraph size */
+    }
+
+    .project-item img {
+        max-width: 90%; /* Allow images to be a bit more fluid */
+    }
+    .project-item { /* Responsive adjustments for project items in the grid */
+        flex-basis: calc(100% - 0px); /* Full width, gap is handled by container */
+        max-width: calc(100% - 0px);
+        /* min-width: auto; */
+    }
+    /* Service Cards: Stack to 1 column from 2 */
+    .service-cards-container > section { /* Already 1 column from 992px, but ensure consistency or specific style if needed */
+        flex-basis: 100%;
+        max-width: 100%;
+        margin-bottom: 20px; /* Add margin when stacked */
+    }
+    .service-cards-container {
+        gap: 0; /* Remove gap as items have margin-bottom */
+    }
+
+    .sticky-quote-button {
+        padding: 8px 15px;
+        font-size: 0.9em; /* Smaller text on button */
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+/* Small screens (phones) - up to 480px */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    
+    header {
+        padding: 15px 0;
+    }
+    header h1 {
+        font-size: 1.8em;
+    }
+    /* Optional: Stack navigation if it becomes too crowded */
+    /* header nav ul li { display: block; margin: 10px 0; } */
+
+    .carousel-caption {
+        padding: 15px 20px;
+        max-width: 90%;
+    }
+    .carousel-caption h2 {
+        font-size: 1.6em;
+    }
+    .carousel-caption p {
+        font-size: 0.9em;
+    }
+
+    section {
+        padding: 40px 15px; /* Reduce section padding */
+    }
+    section h2 {
+        font-size: 1.8em;
+    }
+
+    .button-style, .sticky-quote-button { /* General button adjustments */
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+    .sticky-quote-button { /* Ensure it's not too obtrusive */
+        bottom: 10px;
+        right: 10px;
+    }
+}
