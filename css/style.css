@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif; /* Placeholder font */
+    padding-top: 70px; /* Add padding to body to prevent content from being hidden by sticky header */
+}
+
+header { /* Or your specific navigation selector */
+    position: sticky;
+    top: 0;
+    left: 0; /* Usually good to specify left as well */
+    width: 100%;
+    background-color: #222; /* Example background, adjust as needed for your design */
+    z-index: 1000; /* Ensure it stays on top of other content */
+    padding: 10px 20px; /* Adjust padding as needed */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: adds a subtle shadow */
+    display: flex; /* Using flex to align items */
+    justify-content: space-between; /* Puts space between title and nav */
+    align-items: center; /* Vertically aligns items */
+}
+
+header h1 {
+    color: #fff; /* Ensure title is visible */
+    margin: 0; /* Remove default margin */
+}
+
+header nav ul {
+    list-style: none; /* Remove default list styling */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Align nav items in a row */
+}
+
+header nav li {
+    margin-left: 20px; /* Space between nav items */
+}
+
+header nav a {
+    color: #fff; /* Example: white links on dark sticky nav */
+    text-decoration: none;
+    position: relative; /* For underline pseudo-element */
+    transition: color 0.3s ease; /* Keep existing color transition */
+}
+
+header nav a::after { /* Underline effect */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px; /* Position below the link */
+    left: 50%;
+    background-color: #fff; /* Or a brand color */
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+header nav a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+header nav a:hover {
+    color: #ccc; /* Existing hover color */
+}
+
+
+#hero {
+    min-height: 80vh; /* Make hero section take up most of the viewport height */
+    background-color: #333; /* Temporary dark background */
+    color: #fff; /* Light text for dark background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    position: relative; /* Needed for absolute positioning of child parallax bg */
+}
+
+.parallax-bg-placeholder {
+    position: absolute; /* Or fixed, depending on parallax technique */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* Example styling */
+    background-position: center; /* Example styling */
+    z-index: -1; /* Place it behind hero content */
+    /* Comment: Parallax effect to be implemented with JavaScript */
+}
+
+#hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+#hero .cta-button {
+    padding: 10px 20px;
+    background-color: #555;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition */
+}
+
+#hero .cta-button:hover {
+    background-color: #777; /* Lighter background on hover */
+    transform: translateY(-2px); /* Slight lift */
+}
+
+/* Basic Carousel Styling */
+.hero-carousel, .testimonial-carousel, .team-carousel {
+    margin-top: 30px; /* Space from content above */
+    border: 1px dashed #777; /* Placeholder border */
+    padding: 20px;
+    text-align: center;
+}
+
+.hero-carousel .slide,
+.testimonial-carousel .testimonial-slide,
+.team-carousel .team-member-slide {
+    padding: 15px;
+    background-color: #444; /* Darker slide background */
+    color: #fff;
+    margin-bottom: 10px; /* Space between slide items if stacked for now */
+}
+
+/* Class for elements that will have reveal animations on scroll */
+.reveal-on-scroll {
+    opacity: 0; /* Initially hidden, to be faded in by JS */
+    transform: translateY(20px); /* Optional: slight upward movement on reveal */
+    /* Comment: Reveal animation to be triggered by JavaScript */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Basic transition for JS to leverage */
+}
+
+/* Sticky Quote Button Styling */
+.sticky-quote-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background-color: #007bff; /* Example: a distinct button color */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    z-index: 999; /* Below sticky nav but above most content */
+    /* Comment: JavaScript will be needed to show/hide or modify this button based on scroll position */
+    /* For now, it will always be visible */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Added for consistency */
+}
+.sticky-quote-button:hover {
+    background-color: #0056b3; /* Darker on hover */
+    transform: translateY(-2px); /* Slight lift */
+}
+
+/* Decorative Element Styling */
+.decorative-groove-element {
+    /* Styles to be defined later, possibly animated with JS/CSS */
+    display: inline-block;
+    width: 10px; /* Adjusted size */
+    height: 10px; /* Adjusted size */
+    background-color: #007bff; /* Placeholder color, can be site's brand color */
+    margin-left: 8px; /* Space from text */
+    border-radius: 50%; /* Example shape */
+    /* Comment: Animation for this element to be added later */
+    /* Potential for subtle animation: */
+    /* animation: pulse 2s infinite ease-in-out; */
+}
+
+/* Example pulse animation (can be uncommented if desired)
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+*/
