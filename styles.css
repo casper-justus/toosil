@@ -4,6 +4,25 @@
        e.g., --color-honey: #FFC107; --color-black: #000000; etc. */
 }
 
+/* Skip Link Styling */
+.skip-link {
+    position: absolute;
+    top: -999px; /* Visually hide off-screen */
+    left: 0;
+    background-color: var(--matte-dark-green); /* Use a distinct background */
+    color: #FFF8E1; /* Light text */
+    padding: 10px 15px;
+    z-index: 9999; /* Ensure it's on top of everything when focused */
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 0 0 4px 4px; /* Optional: slightly rounded bottom corners */
+}
+
+.skip-link:focus {
+    top: 0; /* Bring it into view when focused */
+    /* Or use transform: translateY(0); if it was hidden with transform */
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 * {
@@ -40,6 +59,11 @@ a {
 a:hover {
     color: #FFD700; /* Lighter honey on hover */
     /* text-decoration: none; /* Optionally keep or remove underline */
+}
+
+a:focus {
+    outline: 2px solid #FFD700; /* Honey-colored outline */
+    outline-offset: 2px; /* Space between element and outline */
 }
 
 .container {
@@ -105,6 +129,13 @@ header nav ul li a:hover {
     color: #FFD700; /* Honey color text on hover */
     text-decoration: none;
     border-bottom: none; /* Ensure no border */
+}
+
+header nav ul li a:focus {
+    outline: none; /* Remove default outline */
+    background-color: #282828; /* Consistent with hover for background */
+    color: #FFD700; /* Consistent with hover for color */
+    box-shadow: 0 0 0 2px #000000, 0 0 0 4px #FFD700; /* Example: black inner, honey outer glow */
 }
 
 /* Hero Section Styling */
@@ -325,6 +356,23 @@ nav.footer-links-minimal a:hover {
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+/* Shared Focus style for buttons */
+.button-style:focus,
+.button-style-secondary:focus,
+.sticky-quote-button:focus,
+.carousel-button:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 2px #000000, 0 0 0 4px #FFD700; /* Black inner, honey outer glow */
+}
+
+/* If sticky-quote-button needs specific combined shadow (as per original prompt's thought process)
+   This would override the general button focus for this specific class.
+   For consistency, the above shared style is simpler. If we wanted to combine:
+.sticky-quote-button:focus {
+    box-shadow: 0 0 0 2px #000000, 0 0 0 4px #FFD700, 0 6px 12px rgba(255, 221, 0, 0.3);
+}
+*/
 
 .sticky-quote-button {
     position: fixed;
@@ -553,6 +601,107 @@ nav.footer-links-minimal a:hover {
 
 /* .service-card .button-style styling is handled by global .button-style */
 
+/* Features Showcase Section */
+#features-showcase {
+    /* background-color: #000000; /* Or a slightly different dark shade */
+    /* padding: 60px 0; /* Or let inner containers handle padding */
+    /* No specific background needed if .showcase-sticky-content has one,
+       or if it's meant to blend with previous/next sections during scroll.
+       For now, assume it's a continuation of the black theme. */
+}
+
+.showcase-pin-target {
+    height: 300vh; /* Determines how long you scroll 'within' this pinned section (3x viewport height) */
+    position: relative; /* Needed if any absolute positioning is done relative to it, though sticky is main child */
+}
+
+.showcase-sticky-content {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0; /* Sticks to the top of the viewport */
+    width: 100%;
+    height: 100vh; /* Fills the viewport height */
+    overflow: hidden; /* Clips slides during transitions */
+    background-color: #000000; /* Background for the duration of the pinned effect */
+}
+
+.feature-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Hidden by default, JS will make first one active */
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+    /* Will be controlled by JS adding/removing an 'active-slide' class */
+}
+
+.feature-slide.active-slide {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1; /* Ensure active slide is on top if multiple are briefly visible during transition */
+}
+
+.feature-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around; /* Or space-between, center */
+    gap: 40px; /* Space between image and text */
+    max-width: 1100px; /* Max width of content within slide */
+    padding: 40px;
+    color: #FFF8E1; /* Default text color for slides */
+    width: 90%; /* Take up most of the slide width */
+}
+
+.feature-image,
+.feature-text {
+    flex: 1; /* Distribute space equally, or set specific flex-basis */
+    opacity: 0; /* Initial state for entry animation */
+    transform: translateY(30px); /* Initial transform for entry */
+    transition: opacity 0.7s ease-out 0.4s, transform 0.7s ease-out 0.4s; /* Delay entry of content */
+    /* The 0.4s delay allows slide to fade in first, then content animates. */
+}
+
+/* When slide is active, its content animates in */
+.feature-slide.active-slide .feature-image,
+.feature-slide.active-slide .feature-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Specific entry for image and text if desired (e.g., slide from different directions) */
+.feature-slide.active-slide .feature-image {
+    /* transform: translateX(-30px); /* Example if image slides from left */
+    /* transition-delay: 0.5s; /* Stagger image and text if needed */
+}
+.feature-slide.active-slide .feature-text {
+    /* transform: translateX(30px); /* Example if text slides from right */
+    /* transition-delay: 0.7s; */
+}
+
+
+.feature-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.feature-text h3 {
+    font-size: 2.2em; /* Adjust as needed */
+    color: #FFC107; /* Honey color */
+    margin-bottom: 15px;
+}
+
+.feature-text p {
+    font-size: 1.1em;
+    line-height: 1.7;
+}
+
 /* Parallax Styling for #hero-services */
 /* The specific rule for #hero-services.page-hero that only contained position and overflow will be removed.
    Those properties are now added to the general .page-hero rule below. */
@@ -691,6 +840,37 @@ nav.footer-links-minimal a:hover {
 .form-group textarea {
     resize: vertical; /* Allow vertical resize, disable horizontal */
     min-height: 120px;
+}
+
+/* Styling for placeholder text in form inputs and textareas */
+.form-group input[type="text"]::placeholder,
+.form-group input[type="email"]::placeholder,
+.form-group textarea::placeholder {
+    color: #888; /* A light gray that should have better contrast on #111 bg */
+    opacity: 1; /* Ensure it's not too faint in some browsers */
+}
+
+/* Firefox has a separate pseudo-element with lower opacity by default */
+.form-group input[type="text"]::-moz-placeholder,
+.form-group input[type="email"]::-moz-placeholder,
+.form-group textarea::-moz-placeholder {
+    color: #888;
+    opacity: 1;
+}
+
+/* Microsoft Edge and IE */
+.form-group input[type="text"]:-ms-input-placeholder,
+.form-group input[type="email"]:-ms-input-placeholder,
+.form-group textarea:-ms-input-placeholder {
+    color: #888 !important; /* Important sometimes needed for Edge's default styling */
+    opacity: 1;
+}
+
+.form-group input[type="text"]::-ms-input-placeholder, /* Newer Edge versions */
+.form-group input[type="email"]::-ms-input-placeholder,
+.form-group textarea::-ms-input-placeholder {
+    color: #888;
+    opacity: 1;
 }
 
 /* Feedback message styling */
@@ -961,6 +1141,12 @@ header nav ul li a.active-nav-link {
         padding: 8px 12px; /* Reduce padding of nav links */
     }
 
+    /* Carousel Navigation Buttons */
+    .carousel-button {
+        padding: 12px 15px; /* Was 8px 12px. Increased to make target larger. Approx 20px + 24px = 44px */
+        font-size: 20px; /* Stays 20px */
+    }
+
     #hero {
         min-height: 60vh; /* Adjust hero height */
     }
@@ -1009,6 +1195,33 @@ header nav ul li a.active-nav-link {
         gap: 0; /* Remove gap as items have margin-bottom */
     }
 
+    /* Responsive for feature showcase content */
+    .feature-content-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    .feature-image,
+    .feature-text {
+        /* Reset transforms if they were direction-specific for side-by-side */
+        /* Initial state for content animation (if different for stacked) */
+    }
+    .feature-text h3 {
+        font-size: 1.8em;
+    }
+    .feature-text p {
+        font-size: 1em;
+    }
+
+    /* Added from Subtask 71 review */
+    .service-card h3 {
+        font-size: 1.4em; /* Down from 1.6em base */
+    }
+    .feature-text h3 { /* From Features Showcase */
+        font-size: 2em; /* Down from 2.2em base */
+    }
+    /* End of Subtask 71 additions for 768px */
+
     .sticky-quote-button {
         padding: 8px 15px;
         font-size: 0.9em; /* Smaller text on button */
@@ -1049,7 +1262,7 @@ header nav ul li a.active-nav-link {
 
     header nav ul li a { /* Links within pill */
         font-size: 0.85em; /* Further reduce font size */
-        padding: 7px 10px; /* Further reduce padding */
+        padding: 10px 10px; /* Was 7px 10px, increased vertical padding */
     }
 
     /* If the pill gets too tall with wrapped links, an alternative is a vertical list
@@ -1065,7 +1278,8 @@ header nav ul li a.active-nav-link {
         font-size: 1.6em;
     }
     .carousel-caption p {
-        font-size: 0.9em;
+        font-size: 0.95em; /* Was 0.9em. Approx 13.3px if body is 14px. Better. */
+        /* Or make it a fixed unit like 13px if preferred: font-size: 13px; */
     }
 
     section {
@@ -1076,8 +1290,15 @@ header nav ul li a.active-nav-link {
     }
 
     .button-style, .sticky-quote-button { /* General button adjustments */
-        padding: 10px 15px;
+        padding: 12px 15px; /* Was 10px 15px, increased vertical padding */
         font-size: 0.9em;
+    }
+    .button-style-secondary { /* Add this rule inside the 480px media query */
+        padding: 12px 15px; /* Consistent with .button-style */
+        font-size: 0.9em;   /* Consistent with .button-style */
+    }
+    nav.footer-links-minimal a {
+        padding: 6px 6px; /* Was 0 6px, added vertical padding */
     }
     .sticky-quote-button { /* Ensure it's not too obtrusive */
         bottom: 10px;

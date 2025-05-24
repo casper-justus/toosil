@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View the portfolio of Graphite Groove, showcasing innovative web platforms, interactive digital art, luxury e-commerce sites, and sleek mobile app designs.">
     <title>Portfolio - Graphite Groove</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to Main Content</a>
     <header>
         <h1>Graphite Groove</h1>
         <nav>
@@ -19,7 +21,7 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main id="main-content">
     <!-- Hero Section for Portfolio -->
     <section id="hero-portfolio" class="page-hero parallax-hero">
         <div class="parallax-layer parallax-bg-far">
@@ -39,9 +41,11 @@
             <div class="sticky-text-panel">
                 <div class="sticky-content">
                     <h2>The Graphite Groove Approach: Project Journeys</h2> <!-- This can remain static -->
-                    <h3 id="sticky-narrative-headline">Discovery Phase</h3> <!-- This will change -->
-                    <p id="sticky-narrative-paragraph">We begin by deeply understanding your vision, goals, and audience. This foundational step ensures our strategy aligns perfectly with your aspirations.</p> <!-- This will change -->
-                    <a href="index.html#contact" class="button-style" style="margin-top: 20px;">Start Your Project</a>
+                    <div aria-live="polite" aria-atomic="true"> <!-- aria-atomic ensures whole region is reread -->
+                        <h3 id="sticky-narrative-headline">Discovery Phase</h3> <!-- This will change -->
+                        <p id="sticky-narrative-paragraph">We begin by deeply understanding your vision, goals, and audience. This foundational step ensures our strategy aligns perfectly with your aspirations.</p> <!-- This will change -->
+                    </div>
+                    <a href="contact.html" class="button-style" style="margin-top: 20px;">Start Your Project</a>
                 </div>
             </div>
             <div class="scrolling-images-panel">

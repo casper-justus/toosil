@@ -59,6 +59,9 @@ Example:
 const SUPABASE_URL_PLACEHOLDER = 'YOUR_SUPABASE_URL'; // IMPORTANT: User must replace this
 const SUPABASE_ANON_KEY_PLACEHOLDER = 'YOUR_SUPABASE_ANON_KEY'; // IMPORTANT: User must replace this
 
+// Check for prefers-reduced-motion
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 document.addEventListener('DOMContentLoaded', function() {
     // Throttle function
     function throttle(func, limit) {
@@ -71,6 +74,173 @@ document.addEventListener('DOMContentLoaded', function() {
                 inThrottle = true;
                 setTimeout(() => inThrottle = false, limit);
             }
+        }
+    }
+
+    // Features Showcase Scroll Animation
+    const featuresShowcase = document.getElementById('features-showcase');
+
+    if (featuresShowcase) {
+        const pinTarget = featuresShowcase.querySelector('.showcase-pin-target');
+        const stickyContent = featuresShowcase.querySelector('.showcase-sticky-content');
+        const slides = Array.from(stickyContent.querySelectorAll('.feature-slide'));
+        const numSlides = slides.length;
+
+        const setupFeaturesShowcase = () => {
+            const isStatic = window.innerWidth <= 768 || prefersReducedMotion;
+            if (isStatic) {
+                if (numSlides > 0) {
+                    slides.forEach(slide => {
+                        slide.classList.add('active-slide-mobile-static');
+                        slide.classList.remove('active-slide');
+                    });
+                }
+                if (stickyContent) stickyContent.style.position = 'static'; // Changed from ''
+                if (pinTarget) pinTarget.style.height = 'auto'; // Changed from ''
+            } else {
+                if (numSlides > 0) {
+                    slides.forEach(slide => {
+                        slide.classList.remove('active-slide-mobile-static');
+                    });
+                    if (!stickyContent.querySelector('.feature-slide.active-slide')) {
+                        slides[0].classList.add('active-slide');
+                    }
+                }
+                 if (stickyContent) stickyContent.style.position = ''; // Revert to CSS 'sticky'
+                 if (pinTarget) pinTarget.style.height = ''; // Revert to CSS '300vh'
+            }
+        };
+
+        const handleFeaturesScroll = () => {
+            if (!pinTarget || !stickyContent || numSlides === 0) return;
+
+            if (window.innerWidth <= 768 || prefersReducedMotion) {
+                slides.forEach(slide => {
+                    if (!slide.classList.contains('active-slide-mobile-static')) {
+                        slide.classList.add('active-slide-mobile-static');
+                    }
+                    slide.classList.remove('active-slide'); 
+                });
+                stickyContent.style.position = 'static';
+                pinTarget.style.height = 'auto';
+                return; 
+            } else {
+                slides.forEach(slide => {
+                    slide.classList.remove('active-slide-mobile-static');
+                });
+                stickyContent.style.position = ''; // Revert to CSS 'sticky'
+                pinTarget.style.height = ''; // Revert to CSS '300vh' or default
+            }
+
+            const pinTargetRect = pinTarget.getBoundingClientRect();
+            
+            if (pinTargetRect.top <= 0 && pinTargetRect.bottom >= window.innerHeight) {
+                const availableScrollDistance = pinTarget.offsetHeight - window.innerHeight;
+                let currentScrollWithinPinned = -pinTargetRect.top; 
+                currentScrollWithinPinned = Math.max(0, Math.min(currentScrollWithinPinned, availableScrollDistance));
+                
+                let scrollProgress = 0;
+                if (availableScrollDistance > 0) { 
+                    scrollProgress = currentScrollWithinPinned / availableScrollDistance;
+                }
+                
+                const slideIndexToShow = Math.min(Math.floor(scrollProgress * numSlides), numSlides - 1);
+
+                slides.forEach((slide, index) => {
+                    if (index === slideIndexToShow) {
+                        if (!slide.classList.contains('active-slide')) {
+                            slide.classList.add('active-slide');
+                        }
+                    } else {
+                        if (slide.classList.contains('active-slide')) {
+                            slide.classList.remove('active-slide');
+                        }
+                    }
+                });
+
+            } else if (pinTargetRect.top > 0 && slides.length > 0) {
+                slides.forEach((slide, index) => {
+                    if (index === 0) {
+                        if (!slide.classList.contains('active-slide') && !(window.innerWidth <= 768 || prefersReducedMotion)) {
+                            slide.classList.add('active-slide');
+                        }
+                    } else {
+                        if (slide.classList.contains('active-slide')) {
+                            slide.classList.remove('active-slide');
+                        }
+                    }
+                });
+            }
+        };
+        
+        setupFeaturesShowcase(); 
+        window.addEventListener('resize', throttle(setupFeaturesShowcase, 200)); 
+
+        if (typeof throttle === 'function') {
+            window.addEventListener('scroll', throttle(handleFeaturesScroll, 10)); 
+            handleFeaturesScroll(); 
+        } else {
+            window.addEventListener('scroll', handleFeaturesScroll);
+            handleFeaturesScroll(); 
+        }
+    }
+
+    // Scroll Reveal Logic
+                // to 1 (when stickyContent is about to become unsticky at the bottom).
+                // The distance available for "internal" scrolling is pinTarget.offsetHeight - window.innerHeight.
+                const availableScrollDistance = pinTarget.offsetHeight - window.innerHeight;
+                let currentScrollWithinPinned = -pinTargetRect.top; // How much of pinTarget has scrolled above viewport top
+
+                // Clamp currentScrollWithinPinned to be within [0, availableScrollDistance]
+                currentScrollWithinPinned = Math.max(0, Math.min(currentScrollWithinPinned, availableScrollDistance));
+                
+                let scrollProgress = 0;
+                if (availableScrollDistance > 0) { // Avoid division by zero if element not tall enough
+                    scrollProgress = currentScrollWithinPinned / availableScrollDistance;
+                }
+                
+                // Determine which slide should be active based on scrollProgress
+                // Each slide gets an equal portion of the scroll duration.
+                const slideIndexToShow = Math.min(Math.floor(scrollProgress * numSlides), numSlides - 1);
+
+                slides.forEach((slide, index) => {
+                    if (index === slideIndexToShow) {
+                        if (!slide.classList.contains('active-slide')) {
+                            slide.classList.add('active-slide');
+                        }
+                    } else {
+                        if (slide.classList.contains('active-slide')) {
+                            slide.classList.remove('active-slide');
+                        }
+                    }
+                });
+
+            } else if (pinTargetRect.top > 0 && slides.length > 0) {
+                // If we've scrolled back above the pinned section, ensure only the first slide is active
+                // and others are not. This handles scrolling up past the pinned section.
+                slides.forEach((slide, index) => {
+                    if (index === 0) {
+                        if (!slide.classList.contains('active-slide')) {
+                            slide.classList.add('active-slide');
+                        }
+                    } else {
+                        if (slide.classList.contains('active-slide')) {
+                            slide.classList.remove('active-slide');
+                        }
+                    }
+                });
+            }
+            // If pinTargetRect.bottom < window.innerHeight, we've scrolled past the element.
+            // The last active slide will remain visible, which is usually the desired behavior.
+        };
+
+        // Use the existing throttle function
+        if (typeof throttle === 'function') {
+            window.addEventListener('scroll', throttle(handleFeaturesScroll, 10)); // Throttle with 10ms
+            handleFeaturesScroll(); // Initial call
+        } else {
+            window.addEventListener('scroll', handleFeaturesScroll);
+            handleFeaturesScroll(); // Initial call
         }
     }
 
@@ -253,16 +423,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Parallax for elements with .parallax-hero class
     const parallaxHeroes = document.querySelectorAll('.parallax-hero');
+    
+    const baseFarBgSpeed = 0.15; // Renamed for clarity
+    const baseMidBgSpeed = 0.35;
+    const baseContentSpeed = 0.05;
 
     if (parallaxHeroes.length > 0) {
-        // Define parallax speeds (can be kept the same for all heroes for consistency, or customized if needed)
-        const farBgSpeed = 0.15;
-        const midBgSpeed = 0.35;
-        const contentSpeed = 0.05;
-
         const handleGlobalHeroParallax = () => {
             const scrollY = window.pageYOffset;
             const viewportHeight = window.innerHeight;
+
+            let currentFarBgSpeed, currentMidBgSpeed, currentContentSpeed;
+
+            if (prefersReducedMotion) {
+                currentFarBgSpeed = 0;
+                currentMidBgSpeed = 0;
+                currentContentSpeed = 0;
+            } else if (window.innerWidth <= 768) {
+                currentFarBgSpeed = 0.05;
+                currentMidBgSpeed = 0.1;
+                currentContentSpeed = 0.01;
+            } else {
+                currentFarBgSpeed = baseFarBgSpeed;
+                currentMidBgSpeed = baseMidBgSpeed;
+                currentContentSpeed = baseContentSpeed;
+            }
 
             parallaxHeroes.forEach(heroSection => {
                 const parallaxFarBg = heroSection.querySelector('.parallax-bg-far');
@@ -273,23 +458,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 const heroTop = heroRect.top;
                 const heroHeight = heroRect.height;
 
-                // Only animate if the hero section is roughly in the viewport
                 if (heroTop < viewportHeight && heroTop + heroHeight > 0) {
-                    // Apply transforms. These are simple global scroll effects.
-                    // For effects that depend on how much the section itself has scrolled into view,
-                    // the calculation of 'effectiveScrollY' would be more complex per section.
                     if (parallaxFarBg) {
-                        parallaxFarBg.style.transform = `translateY(${scrollY * farBgSpeed}px)`;
+                        parallaxFarBg.style.transform = `translateY(${scrollY * currentFarBgSpeed}px)`;
                     }
                     if (parallaxMidBg) {
-                        parallaxMidBg.style.transform = `translateY(${scrollY * midBgSpeed}px)`;
+                        parallaxMidBg.style.transform = `translateY(${scrollY * currentMidBgSpeed}px)`;
                     }
                     if (parallaxContent) {
-                        if (heroSection.id === 'hero') { // Check if it's the main hero
-                            parallaxContent.style.transform = `translateY(0px)`; // Keep carousel static
+                        if (heroSection.id === 'hero') { 
+                            parallaxContent.style.transform = `translateY(0px)`; 
                         } else {
-                            // Apply contentSpeed for other heroes (services, about, etc.)
-                            parallaxContent.style.transform = `translateY(${scrollY * contentSpeed}px)`;
+                            parallaxContent.style.transform = `translateY(${scrollY * currentContentSpeed}px)`;
                         }
                     }
                 }

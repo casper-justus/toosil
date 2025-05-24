@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Graphite Groove: Crafting exceptional digital experiences where innovative design meets interactive excellence. Discover our portfolio, services, and passion for sleek, modern aesthetics.">
     <title>Graphite Groove</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to Main Content</a>
     <header>
         <h1>Graphite Groove</h1>
         <nav>
@@ -20,7 +22,7 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <section id="hero" class="parallax-hero">
             <div class="parallax-layer parallax-bg-far">
                 <!-- Far background layer -->
@@ -28,22 +30,22 @@
             <div class="parallax-layer parallax-bg-mid">
                 <!-- Mid background layer -->
             </div>
-            <div class="carousel-container parallax-content-foreground">
-                <div class="carousel-slide">
+            <div class="carousel-container parallax-content-foreground" role="region" aria-roledescription="carousel" aria-label="Main product showcase">
+                <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3, Design That Resonates">
                     <img src="https://via.placeholder.com/1200x500/000000/FFC107?text=Sleek+Dashboard+UI/UX+(Graphite+Groove)" alt="Sleek Dashboard UI/UX Design for Graphite Groove">
                     <div class="carousel-caption">
                         <h2>Design That Resonates</h2>
                         <p>Experience the fusion of art and technology. Graphite Groove crafts digital experiences that captivate and inspire.</p>
                     </div>
                 </div>
-                <div class="carousel-slide" style="display:none;"> <!-- Hide other slides for now -->
+                <div class="carousel-slide" style="display:none;" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3, Interactive By Nature">
                     <img src="https://via.placeholder.com/1200x500/0A0A0A/FFD700?text=Dynamic+3D+Scroll+Animation+Interface" alt="Dynamic 3D Scroll Animation Interface">
                     <div class="carousel-caption">
                         <h2>Interactive By Nature</h2>
                         <p>We build fluid, intuitive interfaces that engage users and drive results. Every click, every scroll, perfectly orchestrated.</p>
                     </div>
                 </div>
-                <div class="carousel-slide" style="display:none;"> <!-- Hide other slides for now -->
+                <div class="carousel-slide" style="display:none;" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3, Elegance in Every Pixel">
                     <img src="https://via.placeholder.com/1200x500/121212/FFF8E1?text=Minimalist+Mobile+App+Design+(Graphite+Groove)&txtColor=000000" alt="Minimalist Mobile App Design by Graphite Groove">
                     <div class="carousel-caption">
                         <h2>Elegance in Every Pixel</h2>
@@ -68,6 +70,53 @@
                     <p>Project Momentum: A high-performance e-commerce site for a luxury brand. Focused on seamless user experience, micro-interactions, and a blazing-fast, responsive interface.</p>
                 </div>
             </div>
+        </section>
+
+        <section id="features-showcase">
+            <div class="showcase-pin-target"> <!-- This element gets the large height for scrolling -->
+                <div class="showcase-sticky-content" role="region" aria-label="Key Features Showcase">
+                    
+                    <!-- Slide 1 -->
+                    <div class="feature-slide" id="feature-slide-1" role="group" aria-roledescription="feature" aria-label="Feature 1: Intuitive by Design">
+                        <div class="feature-content-wrapper">
+                            <div class="feature-image">
+                                <img src="https://via.placeholder.com/600x450/000000/FFC107?text=Feature+1:+Intuitive+Interface" alt="Intuitive Interface Design">
+                            </div>
+                            <div class="feature-text">
+                                <h3>Intuitive by Design</h3>
+                                <p>We craft interfaces that are not just beautiful, but incredibly easy to navigate, ensuring a seamless user journey from the first click.</p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Slide 2 -->
+                    <div class="feature-slide" id="feature-slide-2" role="group" aria-roledescription="feature" aria-label="Feature 2: Engaging Animations">
+                        <div class="feature-content-wrapper">
+                            <div class="feature-image">
+                                <img src="https://via.placeholder.com/600x450/0A0A0A/FFD700?text=Feature+2:+Dynamic+Animations" alt="Dynamic Animation Showcase">
+                            </div>
+                            <div class="feature-text">
+                                <h3>Engaging Animations</h3>
+                                <p>Our animations breathe life into your projects, creating memorable interactions that captivate and delight your audience.</p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Slide 3 -->
+                    <div class="feature-slide" id="feature-slide-3" role="group" aria-roledescription="feature" aria-label="Feature 3: Peak Performance">
+                        <div class="feature-content-wrapper">
+                            <div class="feature-image">
+                                <img src="https://via.placeholder.com/600x450/121212/FFF8E1?text=Feature+3:+Peak+Performance&txtColor=000000" alt="Website Performance Optimization">
+                            </div>
+                            <div class="feature-text">
+                                <h3>Peak Performance</h3>
+                                <p>Beyond aesthetics, we engineer for speed and reliability, ensuring your digital platform performs flawlessly under any condition.</p>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div> <!-- end .showcase-sticky-content -->
+            </div> <!-- end .showcase-pin-target -->
         </section>
 
         <section id="testimonials" class="reveal-on-scroll" style="transition-delay: 0.1s;">
