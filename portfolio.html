@@ -21,8 +21,14 @@
     </header>
     <main>
     <!-- Hero Section for Portfolio -->
-    <section id="hero-portfolio" class="page-hero">
-        <div class="container">
+    <section id="hero-portfolio" class="page-hero parallax-hero">
+        <div class="parallax-layer parallax-bg-far">
+            <!-- Far background layer -->
+        </div>
+        <div class="parallax-layer parallax-bg-mid">
+            <!-- Mid background layer -->
+        </div>
+        <div class="container parallax-content-foreground"> <!-- Added class -->
             <h2>Our Work</h2>
             <p>A showcase of innovation, creativity, and meticulous execution.</p>
         </div>
@@ -42,25 +48,25 @@
                 <div class="image-item"
                      data-narrative-headline="Client A: Vision & Clarity"
                      data-narrative-paragraph="For Client A, we translated a complex vision into a clear, actionable strategy, laying the groundwork for an innovative and user-centric web platform.">
-                    <img src="https://via.placeholder.com/600x800/000000/FFC107?text=Portfolio+Image+1" alt="Portfolio Image 1">
+                    <img src="https://via.placeholder.com/600x800/000000/FFC107?text=Client+A:+Strategic+Web+Platform+UI" alt="Client A: Strategic Web Platform UI Design">
                     <div class="image-caption">Client A - Web Platform</div>
                 </div>
                 <div class="image-item"
                      data-narrative-headline="Client B: Interactive Artistry"
                      data-narrative-paragraph="With Client B, we pushed creative boundaries, exploring cutting-edge interactive concepts to develop a captivating digital art experience that engaged audiences worldwide.">
-                    <img src="https://via.placeholder.com/600x800/0A0A0A/FFD700?text=Portfolio+Image+2" alt="Portfolio Image 2">
+                    <img src="https://via.placeholder.com/600x800/0A0A0A/FFD700?text=Client+B:+Immersive+Digital+Art+Experience" alt="Client B: Immersive Interactive Digital Art Experience">
                     <div class="image-caption">Client B - Interactive Art</div>
                 </div>
                 <div class="image-item"
                      data-narrative-headline="Client C: Seamless E-commerce"
                      data-narrative-paragraph="We engineered a flawless and engaging e-commerce experience for Client C, directly boosting sales and cultivating lasting brand loyalty through intuitive design.">
-                    <img src="https://via.placeholder.com/600x800/121212/FFF8E1?text=Portfolio+Image+3&txtColor=000000" alt="Portfolio Image 3">
+                    <img src="https://via.placeholder.com/600x800/121212/FFF8E1?text=Client+C:+Luxury+E-commerce+Interface&txtColor=000000" alt="Client C: Luxury E-commerce Platform Interface">
                     <div class="image-caption">Client C - E-commerce</div>
                 </div>
                 <div class="image-item"
                      data-narrative-headline="Client D: Mobile First"
                      data-narrative-paragraph="Adopting a mobile-first strategy for Client D, we delivered a dynamic and highly accessible app that significantly expanded their audience reach and user engagement.">
-                    <img src="https://via.placeholder.com/600x800/1A1A1A/FFC107?text=Portfolio+Image+4" alt="Portfolio Image 4">
+                    <img src="https://via.placeholder.com/600x800/1A1A1A/FFC107?text=Client+D:+Sleek+Mobile+App+UX/UI" alt="Client D: Sleek Mobile App UX/UI Design">
                     <div class="image-caption">Client D - Mobile App</div>
                 </div>
             </div>
@@ -68,7 +74,14 @@
     </section>
     </main>
     <footer>
-        <p>&copy; 2023 Graphite Groove. All rights reserved.</p>
+        <div class="footer-content-minimal">
+            <p class="copyright-text">&copy; <span id="current-year"></span> Graphite Groove. All rights reserved.</p>
+            <nav class="footer-links-minimal">
+                <a href="#">Privacy Policy</a>
+                <span class="footer-link-separator">|</span>
+                <a href="#">Terms of Use</a>
+            </nav>
+        </div>
     </footer>
     <script src="js/script.js"></script>
 </body>

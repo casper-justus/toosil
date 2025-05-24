@@ -21,24 +21,30 @@
     </header>
 
     <main>
-        <section id="hero">
-            <div class="carousel-container">
+        <section id="hero" class="parallax-hero">
+            <div class="parallax-layer parallax-bg-far">
+                <!-- Far background layer -->
+            </div>
+            <div class="parallax-layer parallax-bg-mid">
+                <!-- Mid background layer -->
+            </div>
+            <div class="carousel-container parallax-content-foreground">
                 <div class="carousel-slide">
-                    <img src="https://via.placeholder.com/1200x500/000000/FFC107?text=Graphite+Groove+Interface" alt="Showcase Image 1">
+                    <img src="https://via.placeholder.com/1200x500/000000/FFC107?text=Sleek+Dashboard+UI/UX+(Graphite+Groove)" alt="Sleek Dashboard UI/UX Design for Graphite Groove">
                     <div class="carousel-caption">
                         <h2>Design That Resonates</h2>
                         <p>Experience the fusion of art and technology. Graphite Groove crafts digital experiences that captivate and inspire.</p>
                     </div>
                 </div>
                 <div class="carousel-slide" style="display:none;"> <!-- Hide other slides for now -->
-                    <img src="https://via.placeholder.com/1200x500/0A0A0A/FFD700?text=Interactive+Elements" alt="Showcase Image 2">
+                    <img src="https://via.placeholder.com/1200x500/0A0A0A/FFD700?text=Dynamic+3D+Scroll+Animation+Interface" alt="Dynamic 3D Scroll Animation Interface">
                     <div class="carousel-caption">
                         <h2>Interactive By Nature</h2>
                         <p>We build fluid, intuitive interfaces that engage users and drive results. Every click, every scroll, perfectly orchestrated.</p>
                     </div>
                 </div>
                 <div class="carousel-slide" style="display:none;"> <!-- Hide other slides for now -->
-                    <img src="https://via.placeholder.com/1200x500/121212/FFF8E1?text=Modern+Aesthetics&txtColor=000000" alt="Showcase Image 3">
+                    <img src="https://via.placeholder.com/1200x500/121212/FFF8E1?text=Minimalist+Mobile+App+Design+(Graphite+Groove)&txtColor=000000" alt="Minimalist Mobile App Design by Graphite Groove">
                     <div class="carousel-caption">
                         <h2>Elegance in Every Pixel</h2>
                         <p>Discover the power of sleek, modern aesthetics. Our designs are crafted with precision, passion, and a touch of groove.</p>
@@ -54,11 +60,11 @@
             <h2>Our Projects</h2>
             <div class="project-grid-container">
                 <div class="project-item">
-                    <img src="https://via.placeholder.com/600x400/0D0D0D/FFC107?text=Project+Aura" alt="Project Aura Mockup">
+                    <img src="https://via.placeholder.com/600x400/0D0D0D/FFC107?text=Project+Aura:+Art+Collective+Web+Platform" alt="Project Aura: Web Platform for Art Collective">
                     <p>Project Aura: An immersive web platform designed for a leading digital art collective. Featuring dynamic content loading and a unique visual identity that adapts to user interaction.</p>
                 </div>
                 <div class="project-item">
-                    <img src="https://via.placeholder.com/600x400/1A1A1A/FFD700?text=Project+Momentum" alt="Project Momentum Mockup">
+                    <img src="https://via.placeholder.com/600x400/1A1A1A/FFD700?text=Project+Momentum:+Luxury+E-commerce+Site" alt="Project Momentum: Luxury E-commerce Website">
                     <p>Project Momentum: A high-performance e-commerce site for a luxury brand. Focused on seamless user experience, micro-interactions, and a blazing-fast, responsive interface.</p>
                 </div>
             </div>
@@ -79,16 +85,16 @@
         <section id="team" class="reveal-on-scroll" style="transition-delay: 0.2s;">
             <h2>Our Team</h2>
             <div class="team-member-summary reveal-on-scroll">
-                <img src="https://via.placeholder.com/150x150/0D0D0D/FFC107?text=JD" alt="Jane Doe - Lead Designer" class="team-avatar-summary">
+                <img src="https://via.placeholder.com/150x150/0D0D0D/FFC107?text=Jane+D.+Profile" alt="Jane Doe - Lead Designer - Graphite Groove" class="team-avatar-summary">
                 <h5>Jane Doe - Lead Designer</h5>
                 <p>Jane spearheads our design efforts, blending artistic vision with user-centric strategies to create unforgettable digital landscapes.</p>
             </div>
             <div class="team-member-summary reveal-on-scroll" style="transition-delay: 0.1s;">
-                <img src="https://via.placeholder.com/150x150/1A1A1A/FFD700?text=RS" alt="Robert Smith - Head of Technology" class="team-avatar-summary">
+                <img src="https://via.placeholder.com/150x150/1A1A1A/FFD700?text=Robert+S.+Profile" alt="Robert Smith - Head of Technology - Graphite Groove" class="team-avatar-summary">
                 <h5>Robert Smith - Head of Technology</h5>
                 <p>Robert leads our development team, pushing the boundaries of what's possible with cutting-edge tech and robust architectures.</p>
             </div>
-            <a href="about.html#team-detailed" class="button-style" style="margin-top: 20px;">Meet The Whole Team</a>
+            <a href="about.html#team-detailed" class="button-style-secondary" style="margin-top: 20px;">Meet The Whole Team</a>
         </section>
 
         <section id="about" class="reveal-on-scroll">
@@ -110,11 +116,18 @@
     </main>
 
     <footer>
-        <p>&copy; 2023 Graphite Groove. All rights reserved.</p>
+        <div class="footer-content-minimal">
+            <p class="copyright-text">&copy; <span id="current-year"></span> Graphite Groove. All rights reserved.</p>
+            <nav class="footer-links-minimal">
+                <a href="#">Privacy Policy</a>
+                <span class="footer-link-separator">|</span>
+                <a href="#">Terms of Use</a>
+            </nav>
+        </div>
     </footer>
 
     <!-- Sticky "Get a Quote" Button Placeholder -->
-    <a href="#contact" class="sticky-quote-button button-style">Get a Quote</a>
+    <a href="contact.html" class="sticky-quote-button button-style">Get a Quote</a> <!-- Updated href -->
 
     <script src="js/script.js"></script>
 </body>

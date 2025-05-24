@@ -251,6 +251,60 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Parallax for elements with .parallax-hero class
+    const parallaxHeroes = document.querySelectorAll('.parallax-hero');
+
+    if (parallaxHeroes.length > 0) {
+        // Define parallax speeds (can be kept the same for all heroes for consistency, or customized if needed)
+        const farBgSpeed = 0.15;
+        const midBgSpeed = 0.35;
+        const contentSpeed = 0.05;
+
+        const handleGlobalHeroParallax = () => {
+            const scrollY = window.pageYOffset;
+            const viewportHeight = window.innerHeight;
+
+            parallaxHeroes.forEach(heroSection => {
+                const parallaxFarBg = heroSection.querySelector('.parallax-bg-far');
+                const parallaxMidBg = heroSection.querySelector('.parallax-bg-mid');
+                const parallaxContent = heroSection.querySelector('.parallax-content-foreground');
+
+                const heroRect = heroSection.getBoundingClientRect();
+                const heroTop = heroRect.top;
+                const heroHeight = heroRect.height;
+
+                // Only animate if the hero section is roughly in the viewport
+                if (heroTop < viewportHeight && heroTop + heroHeight > 0) {
+                    // Apply transforms. These are simple global scroll effects.
+                    // For effects that depend on how much the section itself has scrolled into view,
+                    // the calculation of 'effectiveScrollY' would be more complex per section.
+                    if (parallaxFarBg) {
+                        parallaxFarBg.style.transform = `translateY(${scrollY * farBgSpeed}px)`;
+                    }
+                    if (parallaxMidBg) {
+                        parallaxMidBg.style.transform = `translateY(${scrollY * midBgSpeed}px)`;
+                    }
+                    if (parallaxContent) {
+                        if (heroSection.id === 'hero') { // Check if it's the main hero
+                            parallaxContent.style.transform = `translateY(0px)`; // Keep carousel static
+                        } else {
+                            // Apply contentSpeed for other heroes (services, about, etc.)
+                            parallaxContent.style.transform = `translateY(${scrollY * contentSpeed}px)`;
+                        }
+                    }
+                }
+            });
+        };
+
+        if (typeof throttle === 'function') {
+            window.addEventListener('scroll', throttle(handleGlobalHeroParallax, 10));
+            handleGlobalHeroParallax(); // Initial call
+        } else {
+            window.addEventListener('scroll', handleGlobalHeroParallax);
+            handleGlobalHeroParallax(); // Initial call
+        }
+    }
+
     // Contact Form Handling
     const contactForm = document.getElementById('main-contact-form');
     const formFeedback = document.getElementById('form-feedback');
@@ -352,5 +406,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitButton.textContent = 'Send Message';
             }
         });
+    }
+
+    // Dynamic Year for Footer
+    const yearSpan = document.getElementById('current-year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
     }
 });

@@ -20,8 +20,14 @@
         </nav>
     </header>
     <main>
-        <section id="hero-contact" class="page-hero">
-            <div class="container">
+        <section id="hero-contact" class="page-hero parallax-hero">
+            <div class="parallax-layer parallax-bg-far">
+                <!-- Far background layer -->
+            </div>
+            <div class="parallax-layer parallax-bg-mid">
+                <!-- Mid background layer -->
+            </div>
+            <div class="container parallax-content-foreground"> <!-- Added class -->
                 <h2>Contact Us</h2>
                 <p>We're here to answer your questions and start amazing projects. Reach out!</p>
             </div>
@@ -59,7 +65,14 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2023 Graphite Groove. All rights reserved.</p>
+        <div class="footer-content-minimal">
+            <p class="copyright-text">&copy; <span id="current-year"></span> Graphite Groove. All rights reserved.</p>
+            <nav class="footer-links-minimal">
+                <a href="#">Privacy Policy</a>
+                <span class="footer-link-separator">|</span>
+                <a href="#">Terms of Use</a>
+            </nav>
+        </div>
     </footer>
     <!-- Assuming sticky button is not needed on contact page, or can be added later if required -->
     <script src="js/script.js"></script>

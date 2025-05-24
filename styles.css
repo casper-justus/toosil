@@ -1,3 +1,9 @@
+:root {
+    --matte-dark-green: #3A5F0B; /* Deep olive/forest green */
+    /* Add other global color variables here if we decide to centralize them later,
+       e.g., --color-honey: #FFC107; --color-black: #000000; etc. */
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 * {
@@ -43,42 +49,62 @@ a:hover {
     padding: 20px 0;
 }
 
-/* Header Styling */
+/* Header Styling - Update */
 header {
-    background-color: #0D0D0D; /* Very dark gray for subtle separation */
-    padding: 20px 0;
-    border-bottom: 1px solid #444; /* Dark honey/muted gray border */
-    text-align: center; /* Center logo and nav for now */
+    background-color: #000000; /* Change to full black for a sleeker look, or keep #0D0D0D */
+    padding: 30px 20px 25px 20px; /* Adjusted padding: Top, LR, Bottom */
+    border-bottom: 1px solid #222; /* Slightly darker border, or remove if pill is distinct enough */
+    text-align: center; /* Ensures h1 and nav (if inline-block) are centered */
 }
 
-header h1 { /* Logo styling */
+/* Logo Styling - Update */
+header h1 {
     color: #FFC107; /* Honey color for logo */
-    font-size: 2.5em;
-    margin-bottom: 10px;
+    font-size: 2.2em; /* Slightly smaller if pill is main focus */
+    margin-bottom: 25px; /* Space between logo and pill navbar */
+    font-weight: 700; /* Ensure it's bold */
 }
 
-/* Navigation Styling */
+/* Pill Navbar - <nav> element */
+header nav {
+    display: inline-block; /* Allows centering via text-align on header and fits content width */
+    background-color: #1A1A1A; /* Background for the pill */
+    border-radius: 50px; /* Creates the pill shape */
+    padding: 8px 15px; /* Inner padding for the pill (Y, X) */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    /* border: 1px solid #333; /* Optional: subtle border for the pill itself */
+}
+
 header nav ul {
     list-style: none;
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    display: flex; /* Arrange li items in a row */
 }
 
 header nav ul li {
-    display: inline-block; /* Horizontal navigation */
-    margin: 0 15px;
+    display: inline-block; /* Keep, though flex on ul handles layout */
+    margin: 0 5px; /* Reduced margin between pill items */
 }
 
+/* Navigation Links inside the Pill - Update */
 header nav ul li a {
-    color: #FFC107;
-    font-size: 1.1em;
-    transition: color 0.3s ease, border-bottom-color 0.3s ease; /* Add transition for border */
-    padding-bottom: 5px; /* Add padding for the border to appear nicely */
-    border-bottom: 2px solid transparent; /* Transparent border initially */
+    color: #FFF8E1; /* Light text for links */
+    font-size: 1em; /* Adjust font size for pill */
+    font-weight: 400; /* Regular weight, or 500 for slightly bolder */
+    padding: 10px 15px; /* Padding within each link item */
+    border-radius: 40px; /* Individual items can also be pill-shaped if desired */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Remove old border effect: */
+    border-bottom: none; 
 }
 
+/* Hover state for links in Pill */
 header nav ul li a:hover {
-    color: #FFD700;
+    background-color: #282828; /* Slightly lighter background on hover */
+    color: #FFD700; /* Honey color text on hover */
     text-decoration: none;
-    border-bottom-color: #FFD700; /* Honey color border appears on hover */
+    border-bottom: none; /* Ensure no border */
 }
 
 /* Hero Section Styling */
@@ -95,6 +121,12 @@ header nav ul li a:hover {
     border-bottom: 1px solid #444; /* Dark honey/muted gray border */
     padding: 0; /* Remove padding from hero itself if carousel handles it */
     overflow: hidden; /* Prevent content spill during transitions */
+    position: relative; /* Ensure this is present for parallax layers */
+}
+
+#hero .parallax-content-foreground { /* Specific for main hero's carousel container */
+    z-index: 3; /* Ensure carousel is above parallax background layers */
+    /* position: relative; is already on .carousel-container */
 }
 
 /* #hero h2 and #hero p are removed as content is now in carousel captions */
@@ -204,24 +236,47 @@ section p {
 
 /* Footer Styling */
 footer {
-    background-color: #0D0D0D; /* Very dark gray, similar to header */
-    color: #FFF8E1; /* Light honey/off-white text */
+    background-color: #000000;
+    color: #777;
     text-align: center;
-    padding: 30px 20px;
-    border-top: 1px solid #444; /* Dark honey or muted gray top border */
+    padding: 25px 20px; /* Slightly more Y padding for a bit more breathing room */
+    border-top: 1px solid #1A1A1A;
+    font-size: 0.85em;
 }
 
-footer p {
-    font-size: 0.9em;
-    margin: 0; /* Reset margin for footer p if any was inherited */
+.footer-content-minimal {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping if content is too long for one line */
+    justify-content: center; /* Center the content */
+    align-items: center;
 }
 
-footer a { /* If there are links in footer */
-    color: #FFC107; /* Honey color for links */
+p.copyright-text { /* More specific selector */
+    margin: 0;
+    padding: 5px 10px; /* Add some padding for spacing */
+    /* color is inherited from footer, or can be set specifically e.g. #666 */
 }
 
-footer a:hover {
-    color: #FFD700; /* Lighter honey on hover */
+nav.footer-links-minimal { /* More specific selector */
+    margin: 0;
+    padding: 5px 0; /* Add some padding for spacing */
+}
+
+nav.footer-links-minimal a {
+    color: #888; /* Slightly lighter than base footer text for interactivity */
+    text-decoration: none;
+    padding: 0 10px; /* Generous padding for tap targets / spacing */
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+nav.footer-links-minimal a:hover {
+    color: var(--matte-dark-green); /* Changed from #FFC107 */
+    text-decoration: underline;
+}
+
+.footer-link-separator {
+    color: #444; /* Slightly more visible separator */
+    /* margin: 0 0px; /* Removed, padding on <a> handles spacing */
 }
 
 /* Button Styling (generic) */
@@ -242,6 +297,33 @@ footer a:hover {
     color: #000000;
     transform: translateY(-2px); /* Slight lift effect */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for lift */
+}
+
+.button-style-secondary {
+    display: inline-block;
+    background-color: var(--matte-dark-green);
+    color: #FFF8E1; /* Light text for contrast on dark green */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid var(--matte-dark-green); /* Border same as background, or slightly darker/lighter */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Ensure text is centered if anchor tag width is more than text */
+}
+
+.button-style-secondary:hover {
+    background-color: #4A6F2B; /* Slightly lighter/desaturated green for hover */
+    /* Or, could darken: background-color: #2F4F0A; */
+    color: #FFFFFF; /* Brighter white text on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button-style-secondary:active { /* Optional: active state */
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .sticky-quote-button {
@@ -299,6 +381,7 @@ footer a:hover {
     justify-content: center; /* Center items if they don't fill the line */
     gap: 30px; /* Space between project items */
     padding: 20px 0; /* Padding above/below the grid */
+    perspective: 1000px; /* Define the perspective for 3D effects on child .project-item */
 }
 
 .project-item {
@@ -315,14 +398,15 @@ footer a:hover {
     transform: translateY(40px) scale(0.95); /* Initial transformed state */
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                border-color 0.4s ease;
+                border-color 0.4s ease; /* Ensure this matches any previous general transition for these properties */
+    transform-style: preserve-3d; /* Good practice for elements undergoing 3D transforms */
 }
 
 .project-item:hover {
-    transform: translateY(-8px) scale(1.03); 
-    border-color: #FFC107; 
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 
-                0 0 15px rgba(255, 193, 7, 0.2); 
+    transform: translateY(-8px) scale(1.03) rotateY(-7deg); /* Add a slight rotateY. Negative for opposite tilt to service cards, or adjust as desired. */
+    border-color: #FFC107;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35), /* Slightly enhanced shadow for 3D */
+                0 0 20px rgba(255, 193, 7, 0.25); /* Enhanced honey glow */
     cursor: pointer; 
 }
 
@@ -413,6 +497,7 @@ footer a:hover {
     display: flex; /* Allow .service-card to fill height */
     flex-direction: column;
     padding: 0; /* Remove default section padding, card will handle it */
+    perspective: 1000px; /* Define the perspective for 3D effects on child .service-card */
     /* .reveal-on-scroll class is on this <section> */
 }
 
@@ -429,10 +514,11 @@ footer a:hover {
     justify-content: space-between; /* Pushes button to bottom */
     text-align: center;
     opacity: 1; /* Explicitly set initial opacity */
-    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                border-color 0.35s ease,
-                opacity 0.35s ease; /* Added opacity to transition */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), /* Slightly longer for 3D */
+                box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.35s ease, /* Keep as is or sync with 0.4s */
+                opacity 0.35s ease; /* Keep as is or sync with 0.4s */
+    transform-style: preserve-3d; /* Good practice for elements undergoing 3D transforms */
 }
 
 /* When hovering the container, reduce opacity of all cards that are children of <section>s */
@@ -442,10 +528,10 @@ footer a:hover {
 
 .service-card:hover {
     opacity: 1; /* Ensure hovered card is full opacity */
-    transform: scale(1.04); /* Slightly smaller scale for subtlety */
+    transform: scale(1.04) rotateY(8deg); /* Tilt slightly on Y-axis. Adjust angle as desired. */
     border-color: #FFC107; /* Honey accent border on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), /* Enhanced shadow */
-                0 0 15px rgba(255, 193, 7, 0.15); /* Subtle honey glow */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35), /* Slightly enhanced shadow for 3D */
+                0 0 20px rgba(255, 193, 7, 0.2);  /* Enhanced honey glow */
     z-index: 10; /* Ensure hovered card comes above others if they overlap during scale */
     position: relative; /* Needed for z-index to properly apply on transformed items */
 }
@@ -467,6 +553,53 @@ footer a:hover {
 
 /* .service-card .button-style styling is handled by global .button-style */
 
+/* Parallax Styling for #hero-services */
+/* The specific rule for #hero-services.page-hero that only contained position and overflow will be removed.
+   Those properties are now added to the general .page-hero rule below. */
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* transition: transform 0.1s linear; /* Optional: for smoother JS updates, but JS will set transform directly */
+}
+
+.parallax-bg-far {
+    z-index: 1; /* Furthest back */
+    /* Placeholder background: a very dark, subtle gradient or color */
+    background: linear-gradient(135deg, #0A0A0A 0%, #121212 100%);
+    /* In future, could be: background-image: url('far-bg-image.jpg'); background-size: cover; */
+}
+
+.parallax-bg-mid {
+    z-index: 2; /* Middle layer */
+    /* Placeholder background: a slightly more prominent pattern or color, semi-transparent if needed */
+    /* Example: subtle texture or a color that complements the theme */
+    background: linear-gradient(45deg, rgba(58, 95, 11, 0.1) 0%, rgba(54, 69, 59, 0.2) 100%); /* Using our matte-dark-green subtly */
+    /* background-image: url('mid-bg-texture.png'); background-repeat: repeat; */
+}
+
+/* Ensure foreground content is above parallax layers */
+.page-hero .parallax-content-foreground { /* Applies to foreground content in any page hero */
+    position: relative; /* Needed for z-index to take effect */
+    z-index: 3; /* Highest layer */
+    /* Existing styles from .page-hero .container (padding, text-align, etc.) will apply for content styling */
+}
+
+/* Ensure text remains readable over new backgrounds */
+/* This rule is specific to #hero-services, if other parallax heroes need similar text treatment,
+   they would need their own specific rules or a more general approach if text styling is common.
+   For now, keeping it specific as the backgrounds might differ. */
+#hero-services .parallax-content-foreground h2,
+#hero-services .parallax-content-foreground p {
+    /* Text color is already #FFC107 and #FFF8E1 from .page-hero, which should be fine.
+       If backgrounds make text hard to read, add text-shadow or adjust colors here.
+       Example: text-shadow: 0 0 8px rgba(0,0,0,0.7);
+    */
+}
+
 /* Styling for Page Heroes (if different from main hero) */
 .page-hero {
     background-color: #0D0D0D; /* Slightly different from homepage hero, or can be same */
@@ -474,6 +607,8 @@ footer a:hover {
     padding: 80px 20px;
     text-align: center;
     border-bottom: 1px solid #444;
+    position: relative; /* Add this for positioning context */
+    overflow: hidden;   /* Add this to prevent layer spill */
 }
 .page-hero h2 {
     font-size: 2.8em; /* Larger for page titles */
@@ -789,10 +924,12 @@ footer a:hover {
     }
 }
 
+/* Active link style for Pill Navbar */
 header nav ul li a.active-nav-link {
-    color: #FFD700; /* Lighter honey, same as hover */
-    border-bottom-color: #FFD700; /* Keep border consistent with hover */
-    /* Optionally add more distinction, e.g., font-weight: bold; if not already bold */
+    background-color: #FFC107; /* Honey background for active link */
+    color: #000000; /* Black text for active link */
+    font-weight: 700; /* Bold active link */
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.3); /* Subtle glow for active link */
 }
 
 /* Medium screens (tablets, large phones) - up to 768px */
@@ -801,15 +938,27 @@ header nav ul li a.active-nav-link {
         font-size: 15px; /* Slightly reduce base font size */
     }
 
-    header h1 {
-        font-size: 2em; /* Reduce header logo size */
+    header h1 { /* Logo */
+        font-size: 2em; /* Further reduce logo size */
+        margin-bottom: 20px; /* Adjust space to pill */
+    }
+
+    header nav { /* The Pill itself */
+        padding: 6px 10px; /* Slightly reduce pill padding */
+    }
+
+    header nav ul {
+        /* Allow wrapping for links if they don't fit */
+        /* justify-content: center; /* Center items if they wrap and don't fill line */
+        /* This is already on the ul from previous flex definition, but confirm */
     }
 
     header nav ul li {
-        margin: 0 10px; /* Reduce nav spacing */
+        margin: 0 10px; /* Reduce nav spacing - KEEPING THIS AS PER ORIGINAL, can adjust if needed */
     }
-    header nav ul li a {
-        font-size: 1em; /* Reduce nav link size */
+    header nav ul li a { /* Links within pill */
+        font-size: 0.9em; /* Reduce font size of nav links */
+        padding: 8px 12px; /* Reduce padding of nav links */
     }
 
     #hero {
@@ -877,11 +1026,36 @@ header nav ul li a.active-nav-link {
     header {
         padding: 15px 0;
     }
-    header h1 {
-        font-size: 1.8em;
+    header h1 { /* Logo */
+        font-size: 1.7em; /* Even smaller logo */
+        margin-bottom: 15px;
     }
-    /* Optional: Stack navigation if it becomes too crowded */
-    /* header nav ul li { display: block; margin: 10px 0; } */
+
+    header nav { /* The Pill itself */
+        padding: 5px 8px; /* Smaller pill padding */
+        /* Optional: if pill becomes too wide with wrapped items, make it full width or adjust display */
+        /* display: block; width: 90%; margin: 0 auto; /* Example if it needs to stack better */
+    }
+    
+    header nav ul {
+        flex-wrap: wrap; /* Explicitly allow wrapping */
+        justify-content: center; /* Center wrapped items */
+        gap: 5px; /* Add a small gap for wrapped items */
+    }
+
+    header nav ul li {
+        margin: 2px 3px; /* Adjust margins for wrapped items if needed */
+    }
+
+    header nav ul li a { /* Links within pill */
+        font-size: 0.85em; /* Further reduce font size */
+        padding: 7px 10px; /* Further reduce padding */
+    }
+
+    /* If the pill gets too tall with wrapped links, an alternative is a vertical list
+       or a hamburger menu, but that's a more significant change.
+       For now, wrapping with centering is the primary approach.
+    */
 
     .carousel-caption {
         padding: 15px 20px;

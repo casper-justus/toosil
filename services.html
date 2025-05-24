@@ -21,8 +21,14 @@
     </header>
     <main>
     <!-- Hero Section for Services -->
-    <section id="hero-services" class="page-hero"> <!-- Using a generic class for page heroes -->
-        <div class="container"> <!-- Optional container for centering content -->
+    <section id="hero-services" class="page-hero parallax-hero">
+        <div class="parallax-layer parallax-bg-far">
+            <!-- This layer could eventually hold a very distant background image or subtle pattern -->
+        </div>
+        <div class="parallax-layer parallax-bg-mid">
+            <!-- This layer could hold a closer background element, texture, or subtle graphic -->
+        </div>
+        <div class="container parallax-content-foreground"> <!-- Added class for clarity -->
             <h2>Our Services</h2>
             <p>Crafting digital excellence, tailored to your vision.</p>
         </div>
@@ -74,7 +80,14 @@
     </section>
     </main>
     <footer>
-        <p>&copy; 2023 Graphite Groove. All rights reserved.</p>
+        <div class="footer-content-minimal">
+            <p class="copyright-text">&copy; <span id="current-year"></span> Graphite Groove. All rights reserved.</p>
+            <nav class="footer-links-minimal">
+                <a href="#">Privacy Policy</a>
+                <span class="footer-link-separator">|</span>
+                <a href="#">Terms of Use</a>
+            </nav>
+        </div>
     </footer>
     <script src="js/script.js"></script>
 </body>

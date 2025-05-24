@@ -21,8 +21,14 @@
     </header>
     <main>
     <!-- Hero Section for About Us -->
-    <section id="hero-about" class="page-hero">
-        <div class="container">
+    <section id="hero-about" class="page-hero parallax-hero">
+        <div class="parallax-layer parallax-bg-far">
+            <!-- Far background layer -->
+        </div>
+        <div class="parallax-layer parallax-bg-mid">
+            <!-- Mid background layer -->
+        </div>
+        <div class="container parallax-content-foreground"> <!-- Added class for clarity -->
             <h2>About Graphite Groove</h2>
             <p>We are architects of the digital frontier, blending design and interaction with precision and passion.</p>
         </div>
@@ -42,21 +48,21 @@
             <p style="max-width: 700px; margin-left:auto; margin-right:auto; margin-bottom: 40px;">Graphite Groove is powered by a collective of passionate designers, developers, and strategists dedicated to excellence. Get to know some of the key minds shaping our creative output.</p>
 
             <div class="team-member-profile reveal-on-scroll">
-                <img src="https://via.placeholder.com/200x200/0D0D0D/FFC107?text=JD" alt="Jane Doe - Founder & Creative Director" class="team-avatar-profile">
+                <img src="https://via.placeholder.com/200x200/0D0D0D/FFC107?text=Jane+D.+Profile+Photo" alt="Profile photo of Jane Doe, Founder & Creative Director" class="team-avatar-profile">
                 <h4>Jane Doe</h4>
                 <h5>Founder & Creative Director</h5>
                 <p>With over a decade of experience in the digital design space, Jane founded Graphite Groove with a vision to create a studio that seamlessly blends artistic innovation with technical prowess. Her philosophy centers on user-centric design and crafting narratives that resonate deeply. Jane leads the creative direction of all projects, ensuring every pixel aligns with our clients' goals and our studio's high standards.</p>
             </div>
 
             <div class="team-member-profile reveal-on-scroll" style="transition-delay: 0.1s;">
-                <img src="https://via.placeholder.com/200x200/1A1A1A/FFD700?text=RS" alt="Robert Smith - Lead Technical Architect" class="team-avatar-profile">
+                <img src="https://via.placeholder.com/200x200/1A1A1A/FFD700?text=Robert+S.+Profile+Photo" alt="Profile photo of Robert Smith, Lead Technical Architect" class="team-avatar-profile">
                 <h4>Robert Smith</h4>
                 <h5>Lead Technical Architect</h5>
                 <p>Robert is the technical backbone of Graphite Groove, transforming complex design visions into flawless, high-performance digital realities. He is a master of modern web technologies and passionate about building scalable, secure, and lightning-fast applications. Robert's problem-solving skills and commitment to clean code ensure our projects are as robust as they are beautiful.</p>
             </div>
 
             <div class="team-member-profile reveal-on-scroll" style="transition-delay: 0.2s;">
-                <img src="https://via.placeholder.com/200x200/111111/FFF8E1?text=AM&txtColor=000000" alt="Aisha Mohammed - Senior UX Strategist" class="team-avatar-profile">
+                <img src="https://via.placeholder.com/200x200/111111/FFF8E1?text=Aisha+M.+Profile+Photo&txtColor=000000" alt="Profile photo of Aisha Mohammed, Senior UX Strategist" class="team-avatar-profile">
                 <h4>Aisha Mohammed</h4>
                 <h5>Senior UX Strategist</h5>
                 <p>Aisha champions the user in every project. Her expertise lies in understanding user behavior, conducting in-depth research, and translating those insights into intuitive and engaging user experiences. She believes that great design is not just about aesthetics, but about creating a seamless and meaningful journey for every user, ensuring our solutions are both accessible and effective.</p>
@@ -87,7 +93,14 @@
     </section>
     </main>
     <footer>
-        <p>&copy; 2023 Graphite Groove. All rights reserved.</p>
+        <div class="footer-content-minimal">
+            <p class="copyright-text">&copy; <span id="current-year"></span> Graphite Groove. All rights reserved.</p>
+            <nav class="footer-links-minimal">
+                <a href="#">Privacy Policy</a>
+                <span class="footer-link-separator">|</span>
+                <a href="#">Terms of Use</a>
+            </nav>
+        </div>
     </footer>
     <script src="js/script.js"></script>
 </body>
